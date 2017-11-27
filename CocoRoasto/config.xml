@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Config>
+	<!-- Where the RasPiBrew will be served from -->
+	<RootDir>/var/www/CocoRoasto</RootDir>
+	<!-- Place templates (themes) in templates folder -->
+	<!-- The static folder must contain the corresponding css and js files -->
+	<Template>raspibrew_bootstrap.html</Template>
+	<!-- Use LCD - yes or no-->
+	<Use_LCD>no</Use_LCD>
+	<!-- GPIO pin numbering scheme - choose BOARD or BCM. If something else than these are given, BCM is chosen as default. -->
+	<GPIO_pin_numbering_scheme>BCM</GPIO_pin_numbering_scheme>
+	<!-- Temperature Sensor Id -->
+	<!-- For Temp Control the Temp_Sensor_Id must have a corresponding GPIO Pin used -->
+	<!-- for heat, otherwise the temperature sensor is only for temp readout -->
+	<!-- Repeat same element names (Temp_Sensor_Id and optional Heat_Pin) for additional temp sensors -->
+	<!-- Currently limited to 3 temp sensors but that can easily be expanded in raspibrew.py -->
+	<Temp_Sensor_Id>28-0000037eb5c0</Temp_Sensor_Id>
+    <Roasters>
+        <Roaster>
+            <Roaster_Id>1</Roaster_Id>
+            <Temp_Sensors>
+                <Temp_Sensor>
+                    <Roast_Temp_Sensor_Id>MAX31855</Roast_Temp_Sensor_Id>
+                    <SPI>hardware</SPI>
+                </Temp_Sensor>
+            </Temp_Sensors>
+            <Servo>
+                <Step_Pin>14</Step_Pin>
+                <Dir_Pin>15</Dir_Pin>
+                <MS1_Pin>23</MS1_Pin>
+                <MS2_Pin>24</MS2_Pin>
+                <Steps>full</Steps>
+            </Servo>
+        </Roaster>
+    </Roasters>
+	<Heat_Pin>14</Heat_Pin>
+	<GPIO_Inverted>0</GPIO_Inverted>
+	<!-- Up to 2 GPIO pins are supported but can easily be expanded in code-->
+	<!-- Repeat <GPIO_Pin> element name -->
+	<GPIO_Pin>18</GPIO_Pin>
+	<GPIO_Pin>19</GPIO_Pin>
+	<!-- Units C (Celsius) or F (Fahrenheit) -->
+	<!-- Note: Default is F for Android app which can switch between F and C-->
+	<Temp_Units>F</Temp_Units>
+</Config>
